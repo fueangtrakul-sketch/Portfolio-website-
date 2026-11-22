@@ -1,0 +1,157 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root {
+    --bg-canvas: #04060F;
+    --ink-primary: #F4F7FB;
+    --ink-muted: #B8C4D9;
+    --ink-dim: #7F8FA8;
+    --mint: #5DF0A8;
+    --mint-bright: #9BFFCF;
+    --gold: #F5C26B;
+    --line-glass: rgba(186, 210, 245, 0.14);
+    --surface-glass: rgba(11, 17, 34, 0.62);
+
+    --font-thai: 'Anuphan', 'Plus Jakarta Sans', system-ui, sans-serif;
+    --font-display: 'Anuphan', 'Plus Jakarta Sans', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+  }
+
+  html {
+    font-family: var(--font-thai);
+    background-color: var(--bg-canvas);
+    color: var(--ink-primary);
+    scroll-behavior: smooth;
+    overflow-x: clip;
+  }
+
+  body {
+    background-color: var(--bg-canvas);
+    color: var(--ink-primary);
+    overflow-x: clip;
+  }
+
+  h1, h2, h3, h4, .font-display {
+    font-family: var(--font-display);
+  }
+
+  code, pre, .font-mono {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+.mint-gradient-text {
+  background: linear-gradient(115deg, #F4F7FB 0%, #81F5BE 52%, #74AAFF 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.gold-mint-text {
+  background: linear-gradient(115deg, #F4F7FB 0%, #F5C26B 52%, #81F5BE 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero-mask-fade {
+  -webkit-mask-image: radial-gradient(ellipse 80% 76% at 50% 48%, rgba(0, 0, 0, 1) 35%, rgba(0, 0, 0, 0.55) 68%, rgba(0, 0, 0, 0) 100%);
+  mask-image: radial-gradient(ellipse 80% 76% at 50% 48%, rgba(0, 0, 0, 1) 35%, rgba(0, 0, 0, 0.55) 68%, rgba(0, 0, 0, 0) 100%);
+}
+
+.btn-capsule-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  border-radius: 9999px;
+  padding: 0.78rem 1.45rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #E7FFF3;
+  background: linear-gradient(135deg, rgba(16, 86, 62, 0.68), rgba(11, 56, 46, 0.82));
+  border: 1px solid rgba(93, 240, 168, 0.42);
+  box-shadow: 0 0 28px -6px rgba(93, 240, 168, 0.35), inset 0 1px 0 rgba(168, 255, 224, 0.2);
+  backdrop-filter: blur(12px);
+  transition: transform 180ms cubic-bezier(0.16, 1, 0.3, 1), border-color 180ms ease, box-shadow 180ms ease, background 180ms ease;
+  white-space: nowrap;
+}
+
+.btn-capsule-primary:hover {
+  transform: translateY(-1px);
+  border-color: rgba(129, 245, 190, 0.75);
+  box-shadow: 0 0 36px -4px rgba(93, 240, 168, 0.5), inset 0 1px 0 rgba(168, 255, 224, 0.35);
+}
+
+.btn-capsule-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  border-radius: 9999px;
+  padding: 0.78rem 1.45rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #E2E8F5;
+  background: rgba(10, 15, 30, 0.58);
+  border: 1px solid rgba(186, 210, 245, 0.22);
+  backdrop-filter: blur(12px);
+  transition: transform 180ms cubic-bezier(0.16, 1, 0.3, 1), border-color 180ms ease, color 180ms ease, background 180ms ease;
+  white-space: nowrap;
+}
+
+.btn-capsule-secondary:hover {
+  transform: translateY(-1px);
+  color: #FFFFFF;
+  border-color: rgba(93, 240, 168, 0.48);
+  background: rgba(15, 24, 46, 0.78);
+}
+
+/* 3D Perspective Orbit Stage */
+.portrait-orbit-stage {
+  perspective: 1350px;
+  transform-style: preserve-3d;
+}
+
+.portrait-orbit-camera {
+  transform-style: preserve-3d;
+  transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.portrait-plane {
+  transition: transform 520ms cubic-bezier(0.16, 1, 0.3, 1), opacity 420ms ease, filter 420ms ease;
+  transform-style: preserve-3d;
+}
+
+@keyframes slowOrbitSpin {
+  0% { transform: rotateZ(0deg) rotateX(68deg); }
+  100% { transform: rotateZ(360deg) rotateX(68deg); }
+}
+
+.orbital-ring-spin {
+  animation: slowOrbitSpin 28s linear infinite;
+}
+
+.reduced-motion *,
+.reduced-motion *::before,
+.reduced-motion *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .orbital-ring-spin {
+    animation: none !important;
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "name": "Vercel MCP Connector",
+  "description": "Connect, authenticate, and run tools against Vercel's official remote Model Context Protocol server over Streamable HTTP and OAuth 2.1.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
